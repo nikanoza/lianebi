@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fffdf9; /* Warm cream */
+  --foreground: #2d3436; /* Soft charcoal */
+  --brand-primary: #35b5ac; /* Teal */
+  --brand-secondary: #a8d5ba; /* Soft Green */
+  --brand-accent: #ffd93d; /* Duolingo Yellow */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
+
+  --shadow-bouncy: 0 6px 0 0 rgba(0, 0, 0, 0.1);
+  --shadow-bouncy-hover: 0 8px 0 0 rgba(0, 0, 0, 0.1);
+  --shadow-bouncy-active: 0 0px 0 0 rgba(0, 0, 0, 0.1);
+
+  --radius-4xl: 2rem;
+  --font-sans: var(--font-geist-sans);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply antialiased;
+}
+
+.btn-bouncy {
+  @apply shadow-bouncy hover:shadow-bouncy-hover active:shadow-bouncy-active active:translate-y-[6px] transition-all;
 }

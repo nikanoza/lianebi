@@ -1,0 +1,13 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "blog": "Blog",
+    "cta": "Get the App"
+  },
+  "Footer": {
+    "description": "The first gamified AI parenting guide based on clinical pediatric standards.",
+    "product": "Product",
+    "connect": "Connect",
+    "rights": "All rights reserved. Built for parents, by experts."
+  }
+}
