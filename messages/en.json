@@ -5,7 +5,7 @@
     "cta": "Get the App"
   },
   "Footer": {
-    "description": "The first gamified AI parenting guide based on clinical pediatric standards.",
+    "description": "The first gamified AI parenting guide powered by verified early childhood education strategies.",
     "product": "Product",
     "connect": "Connect",
     "rights": "All rights reserved. Built for parents, by experts.",
@@ -13,33 +13,33 @@
     "facebook": "https://facebook.com/lianebi_en"
   },
   "Hero": {
-    "badge": "✨ Parenting, should be simple",
-    "title": "Stop Reacting. Start Connecting",
-    "subtitle": "Lianebi turns clinical pediatric wisdom into 5-minute interactive missions. Built for the modern parent",
+    "badge": "✨ Parenting, decoded",
+    "title": "Stop Guessing. Start Connecting",
+    "subtitle": "Lianebi turns world-class parenting wisdom into 5-minute interactive missions. Built for the modern family.",
     "cta": "Get the App",
     "missionTitle": "Daily Mission",
-    "missionName": "The 'Something' Secret",
+    "missionName": "The Tantrum Tamer Secret",
     "xpLabel": "Empathy Level"
   },
   "BlogPreview": {
     "badge": "Lianebi Insights",
-    "title": "Pediatric wisdom for modern chaos",
+    "title": "Developmental insights for modern chaos",
     "cta": "Read all articles",
     "readMore": "Read entry"
   },
   "Authority": {
-    "title": "Built on Clinical Standards",
-    "subtitle": "Developed in collaboration with child psychologists and pediatricians to ensure every mission is safe and effective.",
-    "stat1": "100+ Pediatric Guidelines",
+    "title": "Built on Developmental Science",
+    "subtitle": "Developed in collaboration with child development specialists to ensure every mission is safe, effective, and evidence-based.",
+    "stat1": "Proven Pedagogical Frameworks",
     "stat2": "Evidence-Based Methods",
-    "stat3": "Child-Safe AI"
+    "stat3": "Hallucination-Free AI"
   },
   "HowItWorks": {
     "title": "Your journey to calmer parenting",
     "step1_title": "Choose your Mission",
     "step1_desc": "Select a challenge based on your current parenting hurdle.",
     "step2_title": "5-Minute Practice",
-    "step2_desc": "Learn and apply a clinical technique through interactive roleplay.",
+    "step2_desc": "Learn and apply an expert parenting strategy through interactive AI roleplay.",
     "step3_title": "Level Up Connection",
     "step3_desc": "Watch your XP grow as your daily interactions become more meaningful."
   },
