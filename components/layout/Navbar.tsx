@@ -35,10 +35,9 @@ export default function Navbar() {
             {t("blog")}
           </Link>
 
-          {/* Language Switcher */}
           <div className="flex gap-1 bg-gray-100 p-1 rounded-xl border border-gray-200/50">
             <Link
-              href={pathname}
+              href={pathname as any}
               locale="en"
               className={`px-3 py-1.5 rounded-lg text-[10px] font-black tracking-widest transition-all ${
                 locale === "en"
@@ -49,7 +48,7 @@ export default function Navbar() {
               EN
             </Link>
             <Link
-              href={pathname}
+              href={pathname as any}
               locale="ka"
               className={`px-3 py-1.5 rounded-lg text-[10px] font-black tracking-widest transition-all ${
                 locale === "ka"
@@ -101,7 +100,7 @@ export default function Navbar() {
             </span>
             <div className="flex gap-4">
               <Link
-                href={pathname}
+                href={pathname as any}
                 locale="en"
                 className={
                   locale === "en"
@@ -112,7 +111,7 @@ export default function Navbar() {
                 English
               </Link>
               <Link
-                href={pathname}
+                href={pathname as any}
                 locale="ka"
                 className={
                   locale === "ka"
