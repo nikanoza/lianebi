@@ -1,16 +1,28 @@
 "use client";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/routing";
+import { Link, usePathname, useRouter } from "@/i18n/routing"; // Added useRouter
 import { useParams } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const t = useTranslations("Navbar");
   const pathname = usePathname();
+  const router = useRouter();
   const params = useParams();
-  const locale = params.locale as string;
+
+  // Get current locale from params or use a fallback
+  const currentLocale = params.locale as string;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // This function handles the switch safely for dynamic routes
+  const handleLocaleChange = (newLocale: "en" | "ka") => {
+    router.replace(
+      // @ts-ignore - this tells next-intl to use current path + current params (like slug)
+      { pathname, params },
+      { locale: newLocale },
+    );
+  };
 
   return (
     <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
@@ -35,29 +47,28 @@ export default function Navbar() {
             {t("blog")}
           </Link>
 
+          {/* Language Switcher */}
           <div className="flex gap-1 bg-gray-100 p-1 rounded-xl border border-gray-200/50">
-            <Link
-              href={pathname as any}
-              locale="en"
+            <button
+              onClick={() => handleLocaleChange("en")}
               className={`px-3 py-1.5 rounded-lg text-[10px] font-black tracking-widest transition-all ${
-                locale === "en"
+                currentLocale === "en"
                   ? "bg-white shadow-sm text-brand-primary"
                   : "text-gray-400 hover:text-gray-600"
               }`}
             >
               EN
-            </Link>
-            <Link
-              href={pathname as any}
-              locale="ka"
+            </button>
+            <button
+              onClick={() => handleLocaleChange("ka")}
               className={`px-3 py-1.5 rounded-lg text-[10px] font-black tracking-widest transition-all ${
-                locale === "ka"
+                currentLocale === "ka"
                   ? "bg-white shadow-sm text-brand-primary"
                   : "text-gray-400 hover:text-gray-600"
               }`}
             >
               GE
-            </Link>
+            </button>
           </div>
 
           <button className="btn-bouncy bg-brand-primary text-white px-6 py-2.5 rounded-2xl text-sm border-2 border-black/5 shadow-sm">
@@ -76,7 +87,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 p-6 flex flex-col gap-6 font-bold shadow-xl animate-in slide-in-from-top duration-300">
+        <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 p-6 flex flex-col gap-6 font-bold shadow-xl">
           <Link
             href="/"
             className="text-lg"
@@ -99,32 +110,28 @@ export default function Navbar() {
               Language
             </span>
             <div className="flex gap-4">
-              <Link
-                href={pathname as any}
-                locale="en"
-                className={
-                  locale === "en"
-                    ? "text-brand-primary underline decoration-2 underline-offset-4"
-                    : "text-gray-400"
-                }
+              <button
+                onClick={() => {
+                  handleLocaleChange("en");
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`font-black ${currentLocale === "en" ? "text-brand-primary" : "text-gray-400"}`}
               >
-                English
-              </Link>
-              <Link
-                href={pathname as any}
-                locale="ka"
-                className={
-                  locale === "ka"
-                    ? "text-brand-primary underline decoration-2 underline-offset-4"
-                    : "text-gray-400"
-                }
+                EN
+              </button>
+              <button
+                onClick={() => {
+                  handleLocaleChange("ka");
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`font-black ${currentLocale === "ka" ? "text-brand-primary" : "text-gray-400"}`}
               >
-                ქართული
-              </Link>
+                GE
+              </button>
             </div>
           </div>
 
-          <button className="btn-bouncy bg-brand-primary text-white w-full py-4 rounded-2xl shadow-lg active:scale-95 transition-transform">
+          <button className="btn-bouncy bg-brand-primary text-white w-full py-4 rounded-2xl shadow-lg">
             {t("cta")}
           </button>
         </div>

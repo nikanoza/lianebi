@@ -47,5 +47,12 @@
     "title": "Ready to level up your parenting?",
     "subtitle": "Join parents who are turning daily stress into moments of connection.",
     "button": "Get Started"
+  },
+  "Blog": {
+    "pageTitle": "Lianebi Insights",
+    "pageSubtitle": "Clinical wisdom for modern parents. Expert-backed guides for your daily life.",
+    "readMore": "Read entry",
+    "backToBlog": "Back to all insights",
+    "noPosts": "No articles found in this language."
   }
 }
