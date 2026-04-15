@@ -1,19 +1,23 @@
 "use client";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 import { SiInstagram, SiFacebook } from "react-icons/si";
 import { HiOutlineMail } from "react-icons/hi";
 
 export default function Footer() {
+  const t = useTranslations("Footer");
+  const navT = useTranslations("Navbar");
+
   const socialLinks = [
     {
       name: "Instagram",
-      href: "https://instagram.com/lianebi",
+      href: t("instagram"),
       icon: <SiInstagram size={20} />,
       color: "hover:text-[#E4405F]",
     },
     {
       name: "Facebook",
-      href: "https://facebook.com/lianebi",
+      href: t("facebook"),
       icon: <SiFacebook size={20} />,
       color: "hover:text-[#1877F2]",
     },
@@ -37,43 +41,31 @@ export default function Footer() {
               lianebi<span className="text-brand-accent">.</span>
             </Link>
             <p className="mt-6 text-gray-500 max-w-sm leading-relaxed text-lg font-medium">
-              The first gamified AI parenting guide based on clinical pediatric
-              communication standards. Turn stress into growth.
+              {t("description")}
             </p>
           </div>
 
           <div>
             <h4 className="font-black text-brand-dark mb-6 uppercase text-xs tracking-[0.2em]">
-              Product
+              {t("product")}
             </h4>
             <ul className="space-y-4 font-bold text-gray-600">
               <li>
-                <Link
-                  href="/"
-                  className="hover:text-brand-primary transition-colors"
-                >
-                  Home
+                <Link href="/" className="hover:text-brand-primary">
+                  {navT("home")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-brand-primary transition-colors"
-                >
-                  Insights Blog
+                <Link href="/blog" className="hover:text-brand-primary">
+                  {navT("blog")}
                 </Link>
-              </li>
-              <li>
-                <button className="hover:text-brand-primary cursor-pointer transition-colors">
-                  How it Works
-                </button>
               </li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-black text-brand-dark mb-6 uppercase text-xs tracking-[0.2em]">
-              Connect
+              {t("connect")}
             </h4>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -84,7 +76,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className={`p-3 bg-gray-50 rounded-2xl text-gray-400 ${social.color} 
                     hover:bg-white hover:shadow-bouncy hover:-translate-y-1.5 
-                    active:translate-y-0 active:shadow-none transition-all duration-300 flex items-center justify-center`}
+                    active:translate-y-0 transition-all duration-300 flex items-center justify-center`}
                 >
                   {social.icon}
                 </a>
@@ -93,10 +85,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-10 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="pt-10 border-t border-gray-50 text-center md:text-left">
           <p className="text-gray-400 text-sm font-medium">
-            © {new Date().getFullYear()} Lianebi. All rights reserved. Built for
-            parents, by experts.
+            © {new Date().getFullYear()} Lianebi. {t("rights")}
           </p>
         </div>
       </div>

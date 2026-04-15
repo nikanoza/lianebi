@@ -8,6 +8,44 @@
     "description": "The first gamified AI parenting guide based on clinical pediatric standards.",
     "product": "Product",
     "connect": "Connect",
-    "rights": "All rights reserved. Built for parents, by experts."
+    "rights": "All rights reserved. Built for parents, by experts.",
+    "instagram": "https://instagram.com/lianebi_global",
+    "facebook": "https://facebook.com/lianebi_en"
+  },
+  "Hero": {
+    "badge": "✨ Parenting, should be simple",
+    "title": "Stop Reacting. Start Connecting",
+    "subtitle": "Lianebi turns clinical pediatric wisdom into 5-minute interactive missions. Built for the modern parent",
+    "cta": "Get the App",
+    "missionTitle": "Daily Mission",
+    "missionName": "The 'Something' Secret",
+    "xpLabel": "Empathy Level"
+  },
+  "BlogPreview": {
+    "badge": "Lianebi Insights",
+    "title": "Pediatric wisdom for modern chaos",
+    "cta": "Read all articles",
+    "readMore": "Read entry"
+  },
+  "Authority": {
+    "title": "Built on Clinical Standards",
+    "subtitle": "Developed in collaboration with child psychologists and pediatricians to ensure every mission is safe and effective.",
+    "stat1": "100+ Pediatric Guidelines",
+    "stat2": "Evidence-Based Methods",
+    "stat3": "Child-Safe AI"
+  },
+  "HowItWorks": {
+    "title": "Your journey to calmer parenting",
+    "step1_title": "Choose your Mission",
+    "step1_desc": "Select a challenge based on your current parenting hurdle.",
+    "step2_title": "5-Minute Practice",
+    "step2_desc": "Learn and apply a clinical technique through interactive roleplay.",
+    "step3_title": "Level Up Connection",
+    "step3_desc": "Watch your XP grow as your daily interactions become more meaningful."
+  },
+  "FinalCTA": {
+    "title": "Ready to level up your parenting?",
+    "subtitle": "Join parents who are turning daily stress into moments of connection.",
+    "button": "Get Started"
   }
 }
