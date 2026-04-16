@@ -1,24 +1,20 @@
-"use client";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { getAllPosts } from "@/lib/blog";
+import Image from "next/image";
 
-const DUMMY_POSTS = [
-  {
-    id: 1,
-    category: "Communication",
-    slug: "something-vs-anything",
-  },
-  {
-    id: 2,
-    category: "Development",
-    slug: "toddler-tantrums-science",
-  },
-];
+interface Props {
+  locale: string;
+}
 
-export default function BlogPreview() {
-  const t = useTranslations("BlogPreview");
+export default async function BlogPreview({ locale }: Props) {
+  // 1. Fetch real translations and posts on the server
+  const t = await getTranslations("BlogPreview");
+  const allPosts = await getAllPosts(locale);
+
+  // 2. Take only the latest 2 posts for the preview grid
+  const recentPosts = allPosts.slice(0, 2);
 
   return (
     <section className="py-24 px-6 bg-gray-50/50">
@@ -28,7 +24,7 @@ export default function BlogPreview() {
             <span className="text-brand-primary font-black uppercase text-xs tracking-[0.3em] mb-4 block">
               {t("badge")}
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-brand-dark tracking-tighter">
+            <h2 className="text-4xl md:text-5xl font-black text-brand-dark tracking-tighter leading-[1.1]">
               {t("title")}
             </h2>
           </div>
@@ -45,38 +41,51 @@ export default function BlogPreview() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {DUMMY_POSTS.map((post) => (
-            <motion.div
-              key={post.id}
-              whileHover={{ y: -8 }}
-              className="bg-white p-2 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-bouncy transition-all group"
+          {recentPosts.map((post) => (
+            <Link
+              key={post.slug}
+              href={{
+                pathname: "/blog/[slug]",
+                params: { slug: post.slug },
+              }}
+              className="bg-white p-3 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-bouncy hover:-translate-y-2 transition-all group flex flex-col"
             >
-              <div className="aspect-video bg-brand-secondary/20 rounded-4xl mb-6 flex items-center justify-center overflow-hidden">
-                <span className="text-4xl">📚</span>
+              {/* Real Post Image */}
+              <div className="relative aspect-video bg-brand-secondary/20 rounded-[2.2rem] mb-6 overflow-hidden">
+                {post.metadata.image ? (
+                  <Image
+                    src={post.metadata.image}
+                    alt={post.metadata.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="flex h-full items-center justify-center text-4xl">
+                    📚
+                  </div>
+                )}
               </div>
 
               <div className="p-6 pt-0">
                 <div className="flex gap-3 mb-4">
-                  <span className="text-[10px] font-black uppercase tracking-widest bg-gray-100 px-3 py-1 rounded-full text-gray-500">
-                    {post.category}
+                  <span className="text-[10px] font-black uppercase tracking-widest bg-gray-100 px-3 py-1 rounded-full text-brand-primary">
+                    {post.metadata.category}
+                  </span>
+                  <span className="text-[10px] font-bold text-gray-400 py-1">
+                    {post.metadata.date}
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-black text-brand-dark mb-4 group-hover:text-brand-primary transition-colors">
-                  Post Title Placeholder
+                {/* Real Post Title */}
+                <h3 className="text-2xl font-black text-brand-dark mb-4 group-hover:text-brand-primary transition-colors line-clamp-2 leading-tight">
+                  {post.metadata.title}
                 </h3>
 
-                <Link
-                  href={{
-                    pathname: "/blog/[slug]",
-                    params: { slug: post.slug },
-                  }}
-                  className="inline-block font-bold text-sm underline underline-offset-4 decoration-2 decoration-brand-accent/30 hover:decoration-brand-accent transition-all"
-                >
+                <span className="inline-block font-bold text-sm underline underline-offset-4 decoration-2 decoration-brand-accent/30 group-hover:decoration-brand-accent transition-all">
                   {t("readMore")}
-                </Link>
+                </span>
               </div>
-            </motion.div>
+            </Link>
           ))}
         </div>
       </div>

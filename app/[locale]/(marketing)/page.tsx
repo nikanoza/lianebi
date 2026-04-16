@@ -4,13 +4,18 @@ import FinalCTA from "@/components/sections/FinalCTA";
 import Hero from "@/components/sections/Hero";
 import HowItWorks from "@/components/sections/HowItWorks";
 
-export default function Home() {
+export default async function asyncHome({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   return (
     <>
       <Hero />
       <Authority />
       <HowItWorks />
-      <BlogPreview />
+      <BlogPreview locale={locale} />
       <FinalCTA />
     </>
   );
