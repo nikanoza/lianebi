@@ -1,9 +1,11 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import { useModalStore } from "@/hooks/useModalStore";
 
 export default function FinalCTA() {
   const t = useTranslations("FinalCTA");
+  const openModal = useModalStore((state) => state.openModal);
 
   return (
     <section className="py-20 px-6">
@@ -24,7 +26,10 @@ export default function FinalCTA() {
           <p className="text-white/80 text-lg md:text-xl font-medium mb-12">
             {t("subtitle")}
           </p>
-          <button className="btn-bouncy bg-brand-accent text-brand-dark px-12 py-5 rounded-[2rem] font-black text-xl border-2 border-black/5 hover:shadow-xl transition-all">
+          <button
+            onClick={openModal}
+            className="btn-bouncy bg-brand-accent text-brand-dark px-12 py-5 rounded-[2rem] font-black text-xl border-2 border-black/5 hover:shadow-xl transition-all"
+          >
             {t("button")}
           </button>
         </div>

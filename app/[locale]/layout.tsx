@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import GetAppModal from "@/components/GetAppModal";
 import "../globals.css";
 
 export default async function LocaleLayout({
@@ -21,6 +22,7 @@ export default async function LocaleLayout({
           <Navbar />
           <main className="grow pt-20">{children}</main>
           <Footer />
+          <GetAppModal />
         </NextIntlClientProvider>
       </body>
     </html>

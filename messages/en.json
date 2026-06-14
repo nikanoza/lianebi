@@ -54,5 +54,9 @@
     "readMore": "Read entry",
     "backToBlog": "Back to all insights",
     "noPosts": "No articles found in this language."
+  },
+  "Modal": {
+    "title": "Coming Soon!",
+    "message": "The app is currently being uploaded to the Play Store."
   }
 }

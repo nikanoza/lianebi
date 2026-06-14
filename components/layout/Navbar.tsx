@@ -3,19 +3,19 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/routing"; // Added useRouter
 import { useParams } from "next/navigation";
+import { useModalStore } from "@/hooks/useModalStore";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const t = useTranslations("Navbar");
+  const openModal = useModalStore((state) => state.openModal);
   const pathname = usePathname();
   const router = useRouter();
   const params = useParams();
 
-  // Get current locale from params or use a fallback
   const currentLocale = params.locale as string;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // This function handles the switch safely for dynamic routes
   const handleLocaleChange = (newLocale: "en" | "ka") => {
     router.replace(
       // @ts-ignore - this tells next-intl to use current path + current params (like slug)
@@ -71,7 +71,10 @@ export default function Navbar() {
             </button>
           </div>
 
-          <button className="btn-bouncy bg-brand-primary text-white px-6 py-2.5 rounded-2xl text-sm border-2 border-black/5 shadow-sm">
+          <button
+            onClick={openModal}
+            className="btn-bouncy bg-brand-primary text-white px-6 py-2.5 rounded-2xl text-sm border-2 border-black/5 shadow-sm"
+          >
             {t("cta")}
           </button>
         </div>
@@ -131,7 +134,10 @@ export default function Navbar() {
             </div>
           </div>
 
-          <button className="btn-bouncy bg-brand-primary text-white w-full py-4 rounded-2xl shadow-lg">
+          <button
+            onClick={openModal}
+            className="btn-bouncy bg-brand-primary text-white w-full py-4 rounded-2xl shadow-lg"
+          >
             {t("cta")}
           </button>
         </div>

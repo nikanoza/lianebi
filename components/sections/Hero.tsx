@@ -1,14 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useModalStore } from "@/hooks/useModalStore";
 
 export default function Hero() {
   const t = useTranslations("Hero");
+  const openModal = useModalStore((state) => state.openModal);
 
   return (
     <section className="relative overflow-hidden px-6 pt-12 pb-24 md:pt-20 md:pb-32">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 lg:gap-20">
-        {/* Left: Content */}
         <div className="flex-1 text-center md:text-left z-10">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -26,7 +27,10 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <button className="btn-bouncy bg-brand-accent text-brand-dark px-10 py-5 rounded-3xl font-black text-xl border-2 border-black/5 shadow-lg active:scale-95 transition-transform cursor-pointer">
+              <button
+                onClick={openModal}
+                className="btn-bouncy bg-brand-accent text-brand-dark px-10 py-5 rounded-3xl font-black text-xl border-2 border-black/5 shadow-lg active:scale-95 transition-transform cursor-pointer"
+              >
                 {t("cta")}
               </button>
             </div>
